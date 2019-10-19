@@ -164,7 +164,6 @@
             this.btnSaveServerConfigCert.TabIndex = 7;
             this.btnSaveServerConfigCert.Text = "Guardar Configuración VPN y Certificado de Servidor en PDF";
             this.btnSaveServerConfigCert.UseVisualStyleBackColor = true;
-            this.btnSaveServerConfigCert.Click += new System.EventHandler(this.btnSaveServerConfigCert_Click);
             // 
             // menuStrip1
             // 
