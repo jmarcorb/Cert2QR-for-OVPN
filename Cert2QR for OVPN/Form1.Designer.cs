@@ -164,6 +164,7 @@
             this.btnSaveServerConfigCert.TabIndex = 7;
             this.btnSaveServerConfigCert.Text = "Guardar Configuración VPN y Certificado de Servidor en PDF";
             this.btnSaveServerConfigCert.UseVisualStyleBackColor = true;
+            this.btnSaveServerConfigCert.Click += new System.EventHandler(this.btnSaveServerConfigCert_Click);
             // 
             // menuStrip1
             // 
@@ -219,7 +220,7 @@
             this.btnCertKeyUser.Name = "btnCertKeyUser";
             this.btnCertKeyUser.Size = new System.Drawing.Size(408, 23);
             this.btnCertKeyUser.TabIndex = 9;
-            this.btnCertKeyUser.Text = "Guardar Certificado de Usuario y Llave de Usuario en PDF";
+            this.btnCertKeyUser.Text = "Guardar toda la config de usuario en PDF";
             this.btnCertKeyUser.UseVisualStyleBackColor = true;
             this.btnCertKeyUser.Click += new System.EventHandler(this.btnCertKeyUser_Click);
             // 
