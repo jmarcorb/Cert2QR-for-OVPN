@@ -33,13 +33,6 @@
             this.tbSelectedOVPNfile = new System.Windows.Forms.TextBox();
             this.btnSelectOVPNfile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.infoLecturaCA = new System.Windows.Forms.Label();
-            this.infoLecturaCert = new System.Windows.Forms.Label();
-            this.infoLecturaKey = new System.Windows.Forms.Label();
-            this.infoLecturaConfig = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSaveServerConfigCert = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,9 +41,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCertKeyUser = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -84,87 +78,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox1.Location = new System.Drawing.Point(15, 75);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Location = new System.Drawing.Point(15, 178);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 79);
+            this.groupBox1.Size = new System.Drawing.Size(430, 88);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Comprobaciones";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.infoLecturaCA);
-            this.flowLayoutPanel1.Controls.Add(this.infoLecturaCert);
-            this.flowLayoutPanel1.Controls.Add(this.infoLecturaKey);
-            this.flowLayoutPanel1.Controls.Add(this.infoLecturaConfig);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(424, 60);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // infoLecturaCA
-            // 
-            this.infoLecturaCA.AutoSize = true;
-            this.infoLecturaCA.Location = new System.Drawing.Point(3, 0);
-            this.infoLecturaCA.Name = "infoLecturaCA";
-            this.infoLecturaCA.Size = new System.Drawing.Size(35, 13);
-            this.infoLecturaCA.TabIndex = 0;
-            this.infoLecturaCA.Text = "label1";
-            this.infoLecturaCA.Visible = false;
-            // 
-            // infoLecturaCert
-            // 
-            this.infoLecturaCert.AutoSize = true;
-            this.infoLecturaCert.Location = new System.Drawing.Point(3, 13);
-            this.infoLecturaCert.Name = "infoLecturaCert";
-            this.infoLecturaCert.Size = new System.Drawing.Size(35, 13);
-            this.infoLecturaCert.TabIndex = 1;
-            this.infoLecturaCert.Text = "label1";
-            this.infoLecturaCert.Visible = false;
-            // 
-            // infoLecturaKey
-            // 
-            this.infoLecturaKey.AutoSize = true;
-            this.infoLecturaKey.Location = new System.Drawing.Point(3, 26);
-            this.infoLecturaKey.Name = "infoLecturaKey";
-            this.infoLecturaKey.Size = new System.Drawing.Size(35, 13);
-            this.infoLecturaKey.TabIndex = 2;
-            this.infoLecturaKey.Text = "label1";
-            this.infoLecturaKey.Visible = false;
-            // 
-            // infoLecturaConfig
-            // 
-            this.infoLecturaConfig.AutoSize = true;
-            this.infoLecturaConfig.Location = new System.Drawing.Point(3, 39);
-            this.infoLecturaConfig.Name = "infoLecturaConfig";
-            this.infoLecturaConfig.Size = new System.Drawing.Size(35, 13);
-            this.infoLecturaConfig.TabIndex = 3;
-            this.infoLecturaConfig.Text = "label1";
-            this.infoLecturaConfig.Visible = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnSaveServerConfigCert);
-            this.groupBox2.Location = new System.Drawing.Point(15, 171);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 52);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PASO 1 (opcional): Tarjetas Comunes a todos los usuarios";
-            // 
-            // btnSaveServerConfigCert
-            // 
-            this.btnSaveServerConfigCert.Enabled = false;
-            this.btnSaveServerConfigCert.Location = new System.Drawing.Point(6, 19);
-            this.btnSaveServerConfigCert.Name = "btnSaveServerConfigCert";
-            this.btnSaveServerConfigCert.Size = new System.Drawing.Size(408, 23);
-            this.btnSaveServerConfigCert.TabIndex = 7;
-            this.btnSaveServerConfigCert.Text = "Guardar Configuración VPN y Certificado de Servidor en PDF";
-            this.btnSaveServerConfigCert.UseVisualStyleBackColor = true;
-            this.btnSaveServerConfigCert.Click += new System.EventHandler(this.btnSaveServerConfigCert_Click);
+            this.groupBox1.Text = "Detalles";
             // 
             // menuStrip1
             // 
@@ -173,7 +93,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(457, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(455, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -206,12 +126,12 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnCertKeyUser);
-            this.groupBox3.Location = new System.Drawing.Point(15, 229);
+            this.groupBox3.Location = new System.Drawing.Point(15, 86);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(430, 57);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PASO 2: Tarjetas Particulares de CADA USUARIO";
+            this.groupBox3.Text = "Guardar en PDF";
             // 
             // btnCertKeyUser
             // 
@@ -224,18 +144,42 @@
             this.btnCertKeyUser.UseVisualStyleBackColor = true;
             this.btnCertKeyUser.Click += new System.EventHandler(this.btnCertKeyUser_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(15, 149);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(430, 23);
+            this.progressBar1.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 16);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(424, 69);
+            this.textBox1.TabIndex = 0;
+            // 
             // frmQRProfilePrinter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 294);
+            this.ClientSize = new System.Drawing.Size(455, 278);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSelectOVPNfile);
             this.Controls.Add(this.tbSelectedOVPNfile);
             this.Controls.Add(this.labelSelectedOVPNfile);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -245,9 +189,7 @@
             this.Text = "Impresión de configuración VPN en formato QR";
             this.Load += new System.EventHandler(this.frmQRProfilePrinter_Load);
             this.groupBox1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -262,21 +204,17 @@
         private System.Windows.Forms.TextBox tbSelectedOVPNfile;
         private System.Windows.Forms.Button btnSelectOVPNfile;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label infoLecturaCA;
-        private System.Windows.Forms.Label infoLecturaCert;
-        private System.Windows.Forms.Label infoLecturaKey;
-        private System.Windows.Forms.Label infoLecturaConfig;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.Button btnSaveServerConfigCert;
         private System.Windows.Forms.Button btnCertKeyUser;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
