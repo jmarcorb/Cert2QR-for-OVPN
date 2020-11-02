@@ -21,15 +21,15 @@ namespace Cert2QR_for_OVPN
         StringFormat sf = new StringFormat();
         List<perfilPorBloques> listaPerfiles = new List<perfilPorBloques>();
 
-        const int leftBoundsCol1 = 40;
-        const int leftBoundsCol2 = 130;
+        const int leftBoundsCol1 = 20;
+        const int leftBoundsCol2 = 310;
         const int bottomBoundsRow2 = 35;//+30 para la img del qr
         const int bottomBoundsRow1 = 420;//+30 para la img del qr
         const int bottomBoundsRowTitle = 800;
         const int kPixelPerColInQR = 10;
-        const int kLadoFinalQR = 350;
-        const int kSeparacionTextoQR = 15;
-        const int kRotacionTexto = 90;
+        const int kLadoFinalQR = 250;
+        const int kSeparacionTextoQR = 35;
+        const int kRotacionTexto = 0;
 
         public frmQRProfilePrinter()
         {
@@ -184,44 +184,44 @@ namespace Cert2QR_for_OVPN
             //pClasificacion.Alignment = PdfContentByte.ALIGN_CENTER;
             cb.BeginText();
             ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase(title + " " + subtitle), leftBoundsCol1, bottomBoundsRowTitle, 0);
-            //ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("1. Configuración de Servidor"), leftBoundsCol1, bottomBoundsRow1 + kSeparacionTextoQR, 0);
-            //ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("2. Certificado CA de Servidor"), leftBoundsCol2, bottomBoundsRow1 + kSeparacionTextoQR, 0);                                                                                                                  //img.ScaleAbsolute(216, 70);
-            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("3. Certificado del usuario"), leftBoundsCol1, bottomBoundsRow1 + kSeparacionTextoQR, kRotacionTexto);
-            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("4. Key del usuario"), leftBoundsCol1, bottomBoundsRow2 + kSeparacionTextoQR, kRotacionTexto);                                                                                                                  //img.ScaleAbsolute(216, 70);
+            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("1. Configuración de Servidor"), leftBoundsCol1, bottomBoundsRow1 + kLadoFinalQR + kSeparacionTextoQR, kRotacionTexto);
+            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("2. Certificado CA de Servidor"), leftBoundsCol2, bottomBoundsRow1 + kLadoFinalQR + kSeparacionTextoQR, kRotacionTexto);                                                                                                                  //img.ScaleAbsolute(216, 70);
+            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("3. Certificado del usuario"), leftBoundsCol1, bottomBoundsRow2 + kLadoFinalQR + kSeparacionTextoQR, kRotacionTexto);
+            ColumnText.ShowTextAligned(cb, Element.ALIGN_LEFT, new Phrase("4. Key del usuario"), leftBoundsCol2, bottomBoundsRow2 + kLadoFinalQR +kSeparacionTextoQR, kRotacionTexto);                                                                                                                  //img.ScaleAbsolute(216, 70);
 
             cb.EndText();
 
             Bitmap bitmap = null;
             iTextSharp.text.Image img = null;
-            //if (!String.IsNullOrEmpty(config))
-            //{
+            if (!String.IsNullOrEmpty(config))
+            {
 
-            //    bitmap = new Bitmap(crearQR(config, kPixelPerColInQR, -1));
-            //    img = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Bmp); //.GetInstance("http://www.c-sharpcorner.com/App_Themes/CSharp/Images/CSSiteLogo.gif");
-            //    img.ScaleAbsolute(kLadoFinalQR, kLadoFinalQR);
-            //    img.SetAbsolutePosition(leftBoundsCol1, bottomBoundsRow1);
-            //    cb.AddImage(img);
-            //    bitmap.Dispose();
-            //    bitmap = null;
-            //}
-            //if (!String.IsNullOrEmpty(ca))
-            //{
+                bitmap = new Bitmap(crearQR(config, kPixelPerColInQR, -1));
+                img = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Bmp); //.GetInstance("http://www.c-sharpcorner.com/App_Themes/CSharp/Images/CSSiteLogo.gif");
+                img.ScaleAbsolute(kLadoFinalQR, kLadoFinalQR);
+                img.SetAbsolutePosition(leftBoundsCol1, bottomBoundsRow1);
+                cb.AddImage(img);
+                bitmap.Dispose();
+                bitmap = null;
+            }
+            if (!String.IsNullOrEmpty(ca))
+            {
 
-            //    bitmap = new Bitmap(crearQR(ca, kPixelPerColInQR, -1));
-            //    img = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Bmp); //.GetInstance("http://www.c-sharpcorner.com/App_Themes/CSharp/Images/CSSiteLogo.gif");
-            //    img.ScaleAbsolute(kLadoFinalQR, kLadoFinalQR);
-            //    img.SetAbsolutePosition(leftBoundsCol2, bottomBoundsRow1);
-            //    cb.AddImage(img);
-            //    bitmap.Dispose();
-            //    bitmap = null;
-            //}
+                bitmap = new Bitmap(crearQR(ca, kPixelPerColInQR, -1));
+                img = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Bmp); //.GetInstance("http://www.c-sharpcorner.com/App_Themes/CSharp/Images/CSSiteLogo.gif");
+                img.ScaleAbsolute(kLadoFinalQR, kLadoFinalQR);
+                img.SetAbsolutePosition(leftBoundsCol2, bottomBoundsRow1);
+                cb.AddImage(img);
+                bitmap.Dispose();
+                bitmap = null;
+            }
             if (!String.IsNullOrEmpty(cert))
             {
 
                 bitmap = new Bitmap(crearQR(cert, kPixelPerColInQR, -1));
                 img = iTextSharp.text.Image.GetInstance(bitmap, System.Drawing.Imaging.ImageFormat.Bmp); //.GetInstance("http://www.c-sharpcorner.com/App_Themes/CSharp/Images/CSSiteLogo.gif");
                 img.ScaleAbsolute(kLadoFinalQR, kLadoFinalQR);
-                img.SetAbsolutePosition(leftBoundsCol2, bottomBoundsRow1);
+                img.SetAbsolutePosition(leftBoundsCol1, bottomBoundsRow2);
 
                 cb.AddImage(img);
                 
